@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Page from './components/Page'
 
+const Login = React.lazy(() => import("./pages/auth/signin/Login"));
+// const SignUp = React.lazy(() => import("./pages/authentication/Signup/Signup"));
 const Home = React.lazy(() => import("./pages/home/"));
 
 function App() {
@@ -11,6 +13,20 @@ function App() {
     <BrowserRouter>
       <React.Suspense>
         <Routes>
+          <Route
+            exact={true}
+            path="/login"
+            element={
+              <Page component={<Login />} title="Login Infinite Iterators" />
+            }
+          />
+          {/* <Route
+            exact={true}
+            path="/signup"
+            element={
+              <Page component={<SignUp />} title="Signup Infinite Iterators" />
+            }
+          /> */}
           <Route
             exact={true}
             path="/home"
