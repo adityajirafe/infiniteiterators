@@ -1,14 +1,107 @@
 module.exports = {
-  env: { browser: true, es2020: true },
-  extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:react-hooks/recommended',
-  ],
-  parser: '@typescript-eslint/parser',
-  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
-  plugins: ['react-refresh'],
-  rules: {
-    'react-refresh/only-export-components': 'warn',
+  extends: ["airbnb", "airbnb/hooks"],
+  parser: "@babel/eslint-parser",
+  parserOptions: {
+    ecmaFeatures: {
+      experimentalObjectRestSpread: true,
+      generators: true,
+    },
+    requireConfigFile: false,
+    babelOptions: {
+      presets: ["@babel/preset-react"],
+    },
   },
-}
+  env: {
+    browser: true,
+    node: true,
+    jest: true,
+    phantomjs: true,
+    es6: true,
+  },
+  globals: {
+    chrome: "readonly",
+  },
+  plugins: ["react", "react-hooks"],
+  rules: {
+    indent: 1,
+    "import/prefer-default-export": 1,
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        devDependencies: [
+          "**/*.storybook/",
+          "**/*.stories.jsx",
+          "**/*.story.jsx",
+          "**/*.spec.jsx",
+          "**/*.spec.js",
+          "**/tests/*.*",
+          "**/tests/**/*.*",
+          "**/tasks/**/*.js",
+          "**/config/**/*.js",
+          "gulpfile.js",
+        ],
+      },
+    ],
+    "class-methods-use-this": 1,
+    "no-restricted-syntax": 1,
+    "no-use-before-define": 0,
+    "no-param-reassign": 0,
+    "no-console": 1,
+    "no-useless-escape": 1,
+    "new-cap": 0,
+    "func-names": 0,
+    "function-paren-newline": ["error", "consistent"],
+    "prefer-spread": 1,
+    "space-before-function-paren": 0,
+    "comma-dangle": [2, "never"],
+    strict: 0,
+    "max-len": [1, 120],
+    quotes: [
+      "error",
+      "single",
+      {
+        allowTemplateLiterals: true,
+      },
+    ],
+    "object-curly-newline": [
+      "error",
+      {
+        consistent: true,
+      },
+    ],
+    "react/prop-types": 1,
+    "react/forbid-prop-types": 1,
+    "react/style-prop-object": 1,
+    "react/jsx-boolean-value": [1, "always"],
+    "react/no-multi-comp": 1,
+    "react/jsx-no-bind": 1,
+    "react/jsx-space-before-closing": 0,
+    "react/prefer-stateless-function": 0,
+    "react/jsx-closing-bracket-location": 1,
+    "jsx-a11y/no-static-element-interactions": 1,
+    "jsx-a11y/href-no-hash": 0,
+    "react/destructuring-assignment": 0,
+    "react/jsx-wrap-multilines": 0,
+    "react/jsx-props-no-spreading": 0,
+    "import/no-unresolved": "off",
+    "react/function-component-definition": [
+      2,
+      {
+        namedComponents: ["function-declaration", "arrow-function"],
+        unnamedComponents: "arrow-function",
+      },
+    ],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        extensions: [".js", ".jsx"],
+      },
+    ],
+    "jsx-a11y/media-has-caption": 0,
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+  },
+  settings: {
+    version: "detect",
+  },
+};
